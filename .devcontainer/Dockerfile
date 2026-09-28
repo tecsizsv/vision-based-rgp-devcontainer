@@ -53,6 +53,14 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
    # Clean up
    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
+   # Ultalytics YOLO installation
+   RUN apt-get update && apt-get install -y python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+   RUN python3 -m pip install --break-system-packages --ignore-installed typing_extensions \
+    "setuptools>=77.0.3,<80" "numpy<2" ultralytics
+
+
 # Intel RealSense help script- UVC (USB Video Class) driver patch
 #RUN wget https://github.com/IntelRealSense/librealsense/raw/master/scripts/libuvc_installation.sh \
 #   && chmod +x libuvc_installation.sh \
