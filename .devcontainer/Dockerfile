@@ -58,7 +58,8 @@ RUN apt-get update && apt-get install -y python3-pip \
    && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install --break-system-packages --ignore-installed typing_extensions \
-   "setuptools>=77.0.3,<80" "numpy<2" ultralytics
+   "setuptools>=77.0.3,<80" "numpy<2" ultralytics \ 
+   git+https://github.com/ultralytics/CLIP.git
 
 
 # Intel RealSense help script- UVC (USB Video Class) driver patch
