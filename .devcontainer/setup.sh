@@ -44,6 +44,6 @@ fi
 # )
 
 rosdep update --rosdistro=$ROS_DISTRO
-rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO
+rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO --skip-keys="python3-ultralytics-pip"
 
 bash scripts/build.sh

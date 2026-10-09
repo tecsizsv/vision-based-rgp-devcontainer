@@ -53,12 +53,18 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
    # Clean up
    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-# Ultalytics YOLO installation
+# Python3 and pip installation
 RUN apt-get update && apt-get install -y python3-pip \
    && rm -rf /var/lib/apt/lists/*
 
+# PyTorch installation for CUDA 12.1   
 RUN python3 -m pip install --break-system-packages --ignore-installed typing_extensions \
-   "setuptools>=77.0.3,<80" "numpy<2" ultralytics \ 
+   --index-url https://download.pytorch.org/whl/cu121 \
+   torch==2.5.1 torchvision==0.20.1
+
+# Ultalytics YOLO installation
+RUN python3 -m pip install --break-system-packages \
+   "setuptools>=77.0.3,<80" "numpy<2" "opencv-python==4.9.0.80" ultralytics \
    git+https://github.com/ultralytics/CLIP.git
 
 

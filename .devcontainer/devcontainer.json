@@ -18,7 +18,9 @@
 		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
 		"--volume=/mnt/wslg:/mnt/wslg",
 		//"--device=/dev/bus/usb:/dev/bus/usb"
-		"--volume=/dev/bus/usb:/dev/bus/usb"
+		"--volume=/dev/bus/usb:/dev/bus/usb",
+		"--gpus",
+		"all"
 	],
 	"containerEnv": {
 		"DISPLAY": "${localEnv:DISPLAY}", // Needed for GUI try ":0" for windows
