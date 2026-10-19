@@ -41,6 +41,13 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
    ros-kilted-nav2-bringup \
    ros-kilted-pcl-ros \
    ros-kilted-rosbridge-server \
+   # MoveIt Task Constructor + UR5e
+   ros-kilted-moveit-task-constructor-core \
+   ros-kilted-moveit-task-constructor-capabilities \
+   ros-kilted-moveit-task-constructor-visualization \
+   ros-kilted-moveit-visual-tools \
+   ros-kilted-moveit-setup-assistant \
+   ros-kilted-ur \
    libpcl-dev \
    libeigen3-dev \
    libopencv-dev \
@@ -53,8 +60,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
    # Clean up
    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-# Python3 and pip installation
-RUN apt-get update && apt-get install -y python3-pip \
+# Python3, pip and SciPy installation
+RUN apt-get update && apt-get install -y python3-pip python3-scipy \
    && rm -rf /var/lib/apt/lists/*
 
 # PyTorch installation for CUDA 12.1   
