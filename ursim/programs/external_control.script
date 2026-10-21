@@ -1,0 +1,51 @@
+def external_control():
+  global _hidden_verificationVariable=0
+  motion_version_set(2)
+  set_tcp(p[0.0,0.0,0.0,0.0,0.0,0.0])
+  set_tool_communication(False, 115200, 0, 1, 1.5, 3.5)
+  set_tool_output_mode(0)
+  set_tool_digital_output_mode(0, 1)
+  set_tool_digital_output_mode(1, 1)
+  set_tool_voltage(0)
+  set_target_payload(0.000000, [0.000000, 0.000000, 0.000000], [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000])
+  set_safety_mode_transition_hardness(1)
+  set_gravity([0.0, 0.0, 9.82])
+  set_standard_analog_input_domain(0, 1)
+  set_standard_analog_input_domain(1, 1)
+  set_tool_analog_input_domain(0, 1)
+  set_tool_analog_input_domain(1, 1)
+  set_analog_outputdomain(0, 0)
+  set_analog_outputdomain(1, 0)
+  set_input_actions_to_default()
+  tool_wrench_limit_disable()
+  # begin: URCap Installation Node
+  #   Source: Remote TCP & Toolpath, 1.7.0, Universal Robots A/S
+  #   Type: Remote TCP & Toolpath
+  # end: URCap Installation Node
+  # begin: URCap Installation Node
+  #   Source: External Control, 1.0.6, FZI Research Center for Information Technology
+  #   Type: External Control
+  # end: URCap Installation Node
+  step_count_1afa695d_2a62_44b8_ad93_34a55decf524 = 0.0
+  thread Step_Counter_Thread_a9d7eabf_b69e_431a_832d_b08ef4198e57():
+    while (True):
+      step_count_1afa695d_2a62_44b8_ad93_34a55decf524 = step_count_1afa695d_2a62_44b8_ad93_34a55decf524 + 1.0
+      sync()
+    end
+  end
+  run Step_Counter_Thread_a9d7eabf_b69e_431a_832d_b08ef4198e57()
+  global Waypoint_1_p=p[-.000000000000, -.232900000168, 1.079399999952, .000000000000, 2.221441469307, -2.221441468851]
+  global Waypoint_1_q=[0.0, -1.5707963267948966, 0.0, -1.5707963267948966, 0.0, 0.0]
+  while (True):
+    $ 2 "Robot Program"
+    $ 3 "MoveJ"
+    $ 4 "Waypoint_1" "breakAfter"
+    movej(get_inverse_kin(Waypoint_1_p, qnear=Waypoint_1_q), a=1.3962634015954636, v=1.0471975511965976)
+    # begin: URCap Program Node
+    #   Source: External Control, 1.0.6, FZI Research Center for Information Technology
+    #   Type: External Control
+    $ 5 "Control by 192.168.56.1"
+popup("The connection to the remote PC at 192.168.56.1:50002 could not be established. Reason: Connection refused (Connection refused)","Receive program failed", False, True, blocking=True)
+sync()    # end: URCap Program Node
+  end
+end

@@ -1,0 +1,6 @@
+ Program
+   Variables Setup
+   Robot Program
+     MoveJ
+       Waypoint_1
+     Control by 192.168.56.1

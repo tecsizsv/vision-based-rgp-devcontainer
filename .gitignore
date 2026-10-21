@@ -1,5 +1,6 @@
 # Ignore everything
 /*
+/ursim/.polyscope
 
 # Except these:
 !/.devcontainer/
@@ -8,3 +9,4 @@
 !/.gitignore
 !/README.md
 !/config.rviz
+!/ursim
