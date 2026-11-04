@@ -34,14 +34,16 @@ fi
    git pull
 )
 
-# # MoveIt Task Constructor
-# if [ ! -d "src/moveit_task_constructor" ]; then
-#    git clone -b humble https://github.com/moveit/moveit_task_constructor.git src/moveit_task_constructor
-# fi
-# (
-#    cd src/moveit_task_constructor
-#    git pull
-# )
+# UR5e + OnRobot RG2
+if [ ! -d "src/UR_OnRobot_ROS2" ]; then
+   git clone -b bme-5g-dev \
+      https://github.com/tecsizsv/UR_OnRobot_ROS2.git \
+      src/UR_OnRobot_ROS2
+fi
+
+# Clone the required repositories for UR5e + OnRobot RG2
+vcs import src --skip-existing \
+   --input src/UR_OnRobot_ROS2/required.repos
 
 rosdep update --rosdistro=$ROS_DISTRO
 rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO --skip-keys="python3-ultralytics-pip"
