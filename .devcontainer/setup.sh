@@ -45,6 +45,8 @@ fi
 vcs import src --skip-existing \
    --input src/UR_OnRobot_ROS2/required.repos
 
+git -C src/onrobot_driver submodule update --init --recursive
+
 rosdep update --rosdistro=$ROS_DISTRO
 rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO --skip-keys="python3-ultralytics-pip"
 
