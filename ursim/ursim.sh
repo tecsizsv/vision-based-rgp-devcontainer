@@ -217,9 +217,10 @@ post_setup()
   echo
   echo "Docker URSim is running"
   echo "  PolyScope:     http://${IP_ADDRESS}:6080/vnc.html"
-  echo "  Driver:        ros2 launch ur_robot_driver ur_control.launch.py ur_type:=${ROBOT_MODEL_ARG} robot_ip:=${IP_ADDRESS} launch_rviz:=true"
+  # echo "  Driver:        ros2 launch ur_robot_driver ur_control.launch.py ur_type:=${ROBOT_MODEL_ARG} robot_ip:=${IP_ADDRESS} launch_rviz:=true"
+  echo "  Driver:        ros2 launch ur_onrobot_control start_robot.launch.py ur_type:=${ROBOT_MODEL_ARG} onrobot_type:=rg2 robot_ip:=${IP_ADDRESS} use_fake_hardware:=false use_fake_gripper:=true launch_rviz:=false"
   echo "  URCap Host IP: ${HOST_IP}"
-  echo "  Order: robot ON + START -> driver -> Play"
+  echo "  Order: Robot ON + START -> Driver -> Play"
   echo
 }
 
